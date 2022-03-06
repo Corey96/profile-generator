@@ -8,7 +8,6 @@ const fs = require("fs");
 const fsPromises = fs.promises;
 
 async function generate() {
-    /*
   const answers = await inquirer.prompt([
     {
       type: "input",
@@ -30,10 +29,18 @@ async function generate() {
       name: "github",
       message: "Where's the magic code?",
     },
-  ]); 
-  */
-  const templateContents = await fsPromises.readFile('./template/template.html');
-  console.log(templateContents.toString())
+  ]);
+
+  const templateContents = await fsPromises.readFile(
+    "./template/template.html"
+  );
+  const newTemplateContents = templateContents
+    .toString()
+    .replace("{{name}}", answers.name)
+    .replace("{{location}}", answers.location)
+    .replace("{{bio}}", answers.bio)
+    .replace("{{github}}", answers.github);
+  console.log(newTemplateContents);
 }
 
-generate()
+generate();
