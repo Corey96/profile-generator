@@ -12,32 +12,29 @@ async function generate() {
     {
       type: "input",
       name: "name",
-      message: "What is your name",
+      message: "What is your name"
     },
     {
       type: "input",
       name: "location",
-      message: "Where are you?",
+      message: "Where are you?"
     },
     {
       type: "input",
       name: "bio",
-      message: "Tell me about you",
+      message: "Tell me about you"
     },
     {
       type: "input",
       name: "github",
-      message: "Where's the magic code?",
-    },
-  ]);
+      message: "Where's the magic code?"
+    }])
 
-  const templateContents = await fsPromises.readFile("./template/template.html");
-  const newTemplateContents = templateContents.toString()
-    .replace("{{name}}", answers.name)
-    .replace("{{location}}", answers.location)
-    .replace("{{bio}}", answers.bio)
-    .replace("{{github}}", answers.github);
-  await fs.writeFile(index.html, newTemplateContents)
+  const templateContents = await fs.readFile("./template/template.html")
+  const newTemplateContents = Object
+    .keys(answers)
+    .reduce((previous, current) => previous.replace(`{{${current}}}`, answers[current]), templateContents.toString())
+  await fs.writeFile("index.html", newTemplateContents)
 }
 
 generate();
