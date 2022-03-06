@@ -31,11 +31,8 @@ async function generate() {
     },
   ]);
 
-  const templateContents = await fsPromises.readFile(
-    "./template/template.html"
-  );
-  const newTemplateContents = templateContents
-    .toString()
+  const templateContents = await fsPromises.readFile("./template/template.html");
+  const newTemplateContents = templateContents.toString()
     .replace("{{name}}", answers.name)
     .replace("{{location}}", answers.location)
     .replace("{{bio}}", answers.bio)
