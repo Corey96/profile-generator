@@ -37,7 +37,7 @@ async function generate() {
     .replace("{{location}}", answers.location)
     .replace("{{bio}}", answers.bio)
     .replace("{{github}}", answers.github);
-  console.log(newTemplateContents);
+  await fs.writeFile(index.html, newTemplateContents)
 }
 
 generate();
