@@ -5,12 +5,12 @@ async function generate() {
   const answers = await inquirer.prompt([{
       type: "input",
       name: "name",
-      message: "What is your name"
+      message: "What is your name?"
     },
     {
       type: "input",
       name: "location",
-      message: "Where are you?"
+      message: "Where are you located?"
     },
     {
       type: "input",
@@ -20,7 +20,7 @@ async function generate() {
     {
       type: "input",
       name: "github",
-      message: "Where's the magic code?"
+      message: "What is your github username?"
     }])
 
   const templateContents = await fs.readFile('./template/template.html')
