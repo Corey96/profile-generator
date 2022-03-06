@@ -6,7 +6,28 @@
 const inquirer = require("inquirer");
 
 async function generate() {
-  console.log("hello");
+  const answers = await inquirer.prompt([{
+      type: "input",
+      name: "name",
+      message: "What is your name",
+    },
+    {
+      type: "input",
+      name: "location",
+      message: "Where are you?",
+    },
+    {
+      type: "input",
+      name: "bio",
+      message: "Tell me about you",
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "Where's the magic code?",
+    }]);
+
+  console.log(answers);
 }
 
 generate();
