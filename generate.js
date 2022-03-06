@@ -7,8 +7,7 @@ const inquirer = require('inquirer');
 const {promises: fs} = require("fs");
 
 async function generate() {
-  const answers = await inquirer.prompt([
-    {
+  const answers = await inquirer.prompt([{
       type: "input",
       name: "name",
       message: "What is your name"
@@ -29,11 +28,11 @@ async function generate() {
       message: "Where's the magic code?"
     }])
 
-  const templateContents = await fs.readFile("./template/template.html")
+  const templateContents = await fs.readFile('./template/template.html')
   const newTemplateContents = Object
     .keys(answers)
     .reduce((previous, current) => previous.replace(`{{${current}}}`, answers[current]), templateContents.toString())
-  await fs.writeFile("index.html", newTemplateContents)
+  await fs.writeFile('index.html', newTemplateContents)
 }
 
 generate();
