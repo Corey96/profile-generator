@@ -3,9 +3,8 @@
 //fill out the template with the stuff
 //write the templated file to index.html
 
-const inquirer = require("inquirer");
-const fs = require("fs");
-const fsPromises = fs.promises;
+const inquirer = require('inquirer');
+const {promises: fs} = require("fs");
 
 async function generate() {
   const answers = await inquirer.prompt([
