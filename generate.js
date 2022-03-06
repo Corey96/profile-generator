@@ -4,9 +4,13 @@
 //write the templated file to index.html
 
 const inquirer = require("inquirer");
+const fs = require("fs");
+const fsPromises = fs.promises;
 
 async function generate() {
-  const answers = await inquirer.prompt([{
+    /*
+  const answers = await inquirer.prompt([
+    {
       type: "input",
       name: "name",
       message: "What is your name",
@@ -25,9 +29,11 @@ async function generate() {
       type: "input",
       name: "github",
       message: "Where's the magic code?",
-    }]);
-
-  console.log(answers);
+    },
+  ]); 
+  */
+  const templateContents = await fsPromises.readFile('./template/template.html');
+  console.log(templateContents.toString())
 }
 
-generate();
+generate()
